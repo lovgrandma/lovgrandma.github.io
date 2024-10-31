@@ -53,7 +53,7 @@ plugins:
 #   - vendor/ruby/
 
 # header_pages:
-#   - index.md
+  - index.md
 #   - peter.md
 #   - about.md
   - contact.md
