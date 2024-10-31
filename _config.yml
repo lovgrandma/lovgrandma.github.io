@@ -28,7 +28,7 @@ twitter_username: lovgrandma
 github_username:  lovgrandma
 
 # Build settings
-theme: jekyll-theme-console
+remote_theme: jekyll-theme-console
 plugins:
   - jekyll-feed
 
