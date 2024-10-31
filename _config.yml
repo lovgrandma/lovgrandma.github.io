@@ -52,7 +52,7 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-# header_pages:
+header_pages:
   - index.md
 #   - peter.md
 #   - about.md
