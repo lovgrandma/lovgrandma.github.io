@@ -22,7 +22,7 @@ title: Risc changed everything
 email: jessethompson@tycoon.systems
 description: >- # this means to ignore newlines until "baseurl:"
   I build modular architecture that empowers people to launch over and over and over again, fast.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/riscchangedeverything" # the subpath of your site, e.g. /blog
 url: "https://lovgrandma.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: lovgrandma
 github_username:  lovgrandma
@@ -56,9 +56,9 @@ plugins:
 #   - index.md
 #   - peter.md
 #   - about.md
-#   - contact.md
+  - contact.md
 
-# style: light 
+style: light 
 
 # footer: 'follow us on <a href="https://twitter.com/">twitter</a>'
 
