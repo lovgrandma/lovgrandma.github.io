@@ -28,7 +28,7 @@ twitter_username: lovgrandma
 github_username:  lovgrandma
 
 # Build settings
-remote_theme: jekyll-theme-console
+remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
 
@@ -52,6 +52,15 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-collections:
-  posts:
-    output: true
+# header_pages:
+#   - index.md
+#   - peter.md
+#   - about.md
+#   - contact.md
+
+# style: light 
+
+# footer: 'follow us on <a href="https://twitter.com/">twitter</a>'
+
+# # Build settings
+# markdown: kramdown
