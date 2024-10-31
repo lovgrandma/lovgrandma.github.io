@@ -58,7 +58,7 @@ plugins:
 #   - about.md
   - contact.md
 
-style: light 
+# style: light 
 
 # footer: 'follow us on <a href="https://twitter.com/">twitter</a>'
 
