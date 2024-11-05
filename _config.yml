@@ -28,9 +28,15 @@ twitter_username: lovgrandma
 github_username:  lovgrandma
 
 # Build settings
-remote_theme: b2a3e8/jekyll-theme-console
+remote_theme: lovgrandma/jekyll-theme-console
 plugins:
   - jekyll-feed
+
+pagination:
+  enabled: true
+  limit: 10
+  permalink: /page/:num/
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
