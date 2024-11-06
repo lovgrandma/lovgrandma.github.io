@@ -3,7 +3,7 @@ layout: post
 title:  "Hello!"
 date:   2024-10-31 12:32:45 +0100
 categories:
-featured_image: /assets/images/mvp.jpeg
+featured_image: /assets/images/mvp.jpg
 ---
 
 # Viva la Vulva!
