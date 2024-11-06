@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "mvp.. or is it?"
+date:   2024-11-05 12:32:45 +0100
+categories:
+featured_image: /assets/images/mvp.jpg
+---
+
+# Mvp
