@@ -6,4 +6,39 @@ categories:
 featured_image: /assets/images/mvp.jpg
 ---
 
-# Mvp
+# An age old problem
+This is troubling.
+
+How do you get excited with your customer about what they are building... and then ineveitably bring them back down to reality? I have an idea. Try quietly untieing a balloon and slowly letting the air out instead of popping it. Oh how I underestimated the value of "bursting the clients bubble". 
+
+In normalizing the process of calmly dailing back the customers hopes and dreams for the MVP what do we get? I can think of 3 insights:
+
+# 1. Check your emotional attachment at the door.
+Building a product should not be a romanticized process. Leave that to marketing if they decide to go that route. Although, if you're going to own a decision, don't make it "I was married to the product". The minimum viable product is only of value once it gives us some insight about what people like and do not like. Otherwise we are obsessing over the details in an undelivered product. At this point we are guestimating or maybe even dreaming about how we would like to world to be.
+
+Think of it this way. Your passion is valuable, but contextually. It is valuable in your approach towards building something, engaging with the customer, enshrining processes that deliver predictable results and more. Although, passion stops becoming valuable when we build in a silo. I recently met a developer that told me how he was producing a product to sell in 3 hour dev cycles. It really put a reset mentally on everything I build. 
+
+Originally I kept thinking I had to prove my self. Trying to prove to developers more senior than me that I can build complex systems just like them. Which was my key misunderstanding. Senior developers don't build complex systems. They build simple ones that are built to scale predictably.
+
+# 2. Use technologies that pair well with current processes
+New software and technologies are a great way to get people interested about building technology. From paper to specification to library, new tech is always trying to figure out ways to improve the world and improve the processes we use. Although, the amount of effort required to successfully integrate new technologies - espeically in existing enterprises - is immense. More often than not, the juice is not worth the squeeze. Another thing, sometimes the old stuff just works quite well.
+
+It is a incredible skill to thread the needle and figure out what is the healthy medium between using new technology and maintaining old systems. When you're working on one of your own side projects, the consequences for picking up new technology is nonexistent. In fact its good. It expands your mind and gets you to think differently or revisit old paradigms that are reappearing in new technology (Like Golang and CSP). Although, when you are entering a medium to large sized business, to brazenly integrate new technology where you can is a careless and sloppy mistake.
+
+Think of the popularity of frameworks like React and Electron. We get that they are valuable due to their cross platform support. Although before you try to convince the legacy business to switch all of their .NET framework applications over to React, maybe consider .NET core? You compliment the expertise of the existing engineers while making a less extreme shift to a completely new paradigm.
+
+# 3. Let the customer build the product
+A time old issue that I find again and again is the hallucination of "perfect products". These features that people lift from their subconscious and present to the programmer as if it is the secret sauce that the customers are asking for. I've seen this approach fail again and again. In any industry, you will have informed players that must advise the development process and hopefully you yourself as the developer have significant overlap as an insider as well. Although, only to a certain extent can you estimate what the customer actually wants. You need to talk to customers and make it a ritualistic process.
+
+Make it easy to deliver and make it easy to get the customer to tell you exactly what they want. There was a time when I wanted to not have to deal with the daily tug of war of different egos, characters, self-absorbed personalities and more. I still don't. I think most people don't. Although, the issue is is that you actually have to push back on these types. You have to say "No".
+
+As a developer I think it is a very appealling idea to look at every request for a feature as a challenge. Once you get past you insecurity, then what? You are going to keep building whatever people throw at you? I think in the hands of a qualified product owner or business analyst you will seldom be asked to develop anything excessive, but outside of those perfect variables if you don't prepare to redirect the conversation towards what the customer has asked for, you will suffer. You will spend months building features that nobody said they wanted and it will likely fall back on you. Not the person that suggested it.
+
+With todays tools of course, there is no limitation to what we can build. I love a challenge. Although that still means I must take on the responsibility of delivering it within the existing systems of a business that serves real customers. As much as the client may believe in their ideas, what is ultimately going to matter is what happens when the intended customer touches that product. This is essentially a process of saving the client from themselves.
+
+Ultimately in your career you should be prioritizing building systems that help everybody serve the customer. Serve the customer and their wallet will serve you. Although, you cannot serve customers by trying to deliver a 911 GT3 R in the first deployment. It took 50+ years to make that piece of engineering. Why sacrifice your health and wellbeing to try do the impossible in 1 or 2 years when the customer will tell you exactly what they want.
+
+Enshrine customer feedback as a core tenet of your business and build systems to get as much criticism and push back as fast as potentially possible. This is what I now tell my customers. Try to avoid worshiping your figma. The presentation layer can usually be changed.
+
+What we do know is that we must build infrastructure that allows for us to pivot and move around like chameleons. Build resilient infrastructure and simple presentations that we can change once we recognize that they are not working. Introduce as many opportunities as you potentially can to pull a customer into your domain and pull out of them a criticism of the product you are selling.
+
