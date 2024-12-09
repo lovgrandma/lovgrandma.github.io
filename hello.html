@@ -144,6 +144,9 @@
     h5 {
         font-size: calc(1rem * 1.618 * 1);
     }
+    p {
+        font-size: 1rem;
+    }
     p.p2 {
         font-size: 1.125rem;
     }
@@ -152,7 +155,7 @@
     }
     .big-small {
         gap: 1rem;
-        div:first-child {
+        > div:first-child {
             width: 75%;
         }
     }
@@ -161,6 +164,23 @@
     }
     .icon-rounded {
         border-radius: 5rem;
+    }
+    .topic-container {
+        background: #f3f3f3;
+        border-radius: 2rem;
+        padding: 1rem;
+        margin-top: 1rem;
+        width: auto;
+    }
+    .blur {
+        filter: blur(30px);
+        transition: 500ms;
+    }
+    .unblur {
+        filter: none;
+    }
+    a:hover * {
+        color: grey;
     }
     @media (max-width: 800px) {
         h1 {
@@ -189,18 +209,27 @@
             <div>
                 <h3 style="margin-top: 0; margin-bottom: 1rem;">Jesse A. Thompson</h3>
                 <p class="p2">Motivated Software Tech that takes pride in being the single first and last mover in delivering products to customers.</p>
-                </div>
+            </div>
             <div>
                 <img src="/assets/images/1621918816912.jpeg" class="icon icon-rounded" />
             </div>
         </div>
+        <div id="languages-container"></div>
         <div style="margin-top: 2rem;">
             <h5>About me</h5>
-            <p class="p2">I build and maintain modular systems that make it easy for teams to pivot using scalable infrastructure</p>
-            <div id="languages-container">
-
-            </div>
+            <p>I build and maintain modular systems that make it easy for teams to pivot using scalable infrastructure.<br></br>I graduated from Sheridan College in 2021 after having learned full stack development building my own Youtube clone in React, Node.js and MongoDB with a sprinkle of Socket.io and Neo4j. From there I decided I wanted to transition from UI/UX and master building distributed systems at scale.</p>
+            <div id="skills-container"></div>
+            <div id="tools-container"></div>
         </div>
     </div>
 </div>
 <script src="/module/hello.js" type="module"></script>
+<script>
+    function fireInitialized() {
+        const e = new CustomEvent('typed-initialized', {
+            detail: 'Typed loaded'
+        })
+        document.dispatchEvent(e)
+    }
+</script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" onload="fireInitialized()" defer></script>
