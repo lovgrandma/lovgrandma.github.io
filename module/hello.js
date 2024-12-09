@@ -310,7 +310,7 @@ content.set('multi-tenant_infrastructure', {
     link: [
         {
             container: `multi-tenant_infrastructure-link`,
-            href: 'https://www.tycoon.systems/w?v=ffdf8326-c854-40cc-aed1-6c18c9d02614',
+            href: 'https://www.tycoon.systems/w?v=8e706d41-9366-45ba-a03b-adb218b816a3',
         }
     ],
     media: [
@@ -772,7 +772,7 @@ content.set('ffmpeg', {
     link: [
         {
             container: `ffmpeg-link`,
-            href: 'https://www.tycoon.systems/upload',
+            href: 'https://www.tycoon.systems/w?v=2b02ef22-43dd-4794-873b-f05dc4747fd1',
         }
     ],
     media: [
