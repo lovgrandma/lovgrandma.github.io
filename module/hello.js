@@ -531,6 +531,33 @@ content.set('twilio', {
     ],
 })
 
+content.set('rtmp', {
+    h5: [
+        {
+            container: `rtmp-h5`,
+            content: 'RTMP',
+        }
+    ],
+    link: [
+        {
+            container: `rtmp-link`,
+            href: 'https://www.tycoon.systems/w?v=f3fc2ffe-389d-4dd7-81f0-54f644a78eb0',
+        }
+    ],
+    // media: [
+    //     {
+    //         container: `javascript-media`,
+    //         content: 'Javascript'
+    //     }
+    // ],
+    content: [
+        {
+            container: `rtmp-content`,
+            content: `<div>Built proof of concept for RTMP livestreaming service in Go to serve Livestreams via CDN to the web. Creates individual channels for ingesting stream on unique port on request to create stream and then listens for publishing rtmp stream from RTMP client (like OBS). Encodes incoming bytes and transcodes to flv for organizing in ABR playlist and automatic rclone upload to S3 for immediate consumption of authorized web video player clients</div>`
+        }
+    ],
+})
+
 document.addEventListener('typed-initialized', e => {
     Object.entries(ALL_SECTIONS).map(async m => {
         const containerName = `${m[0].charAt(0)}${m[0]?.substring(1, m[0].length).toLowerCase()}-loadTo`
