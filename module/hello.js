@@ -7,7 +7,7 @@ const patch = init([
     eventListenersModule
 ])
 
-const SKILLS = [ 'System Architecture', 'Web UI UX', 'Multi-tenant Infrastructure', 'Concurrency', 'Distributed Systems', 'Real Time Data Transfer', 'Data Modelling' ]
+const SKILLS = [ 'System Architecture', 'Web UI UX', 'Multi-tenant Infrastructure', 'Concurrency', 'Distributed Systems', 'Real Time Data Transfer', 'Data Modelling', 'Rapid Product Development' ]
 const LANGUAGES = [ 'Javascript', 'Go', 'Python', 'Java', 'C Sharp', 'Php' ]
 const TOPICS = [ 'PL SQL', 'Redis', 'Next_js React', 'gRPC', 'Websockets', 'Playwright', 'Neo4j', 'NGINX', 'Kubernetes', 'AWS', 'Postgres', 'Proxmox', 'FFmpeg', 'Node js', 'RTMP', 'Live Chat', 'E-commerce', 'Redux', 'Google Ads IMA SDK', 'Twilio', 'MongoDB' ]
 
@@ -431,6 +431,33 @@ content.set('data_modelling', {
         {
             container: `data_modelling-content`,
             content: `<div>Modelled over 25 tables for serving e-commerce across different countries (Stripe, paystack), capturing forums and threads, video and livestreams, articles, collections containing other records. Additionally, experimented with copying data to Neo4j in older YouTube clone project which allowed for fetching only comments that friends and friends of friends had posted</div>`
+        }
+    ],
+})
+
+content.set('rapid_product_development', {
+    h5: [
+        {
+            container: `rapid_product_development-h5`,
+            content: 'Rapid Product Development',
+        }
+    ],
+    link: [
+        {
+            container: `rapid_product_development-link`,
+            href: 'https://www.tycoon.systems/w?v=e25015cf-0e0e-47b9-93f2-b649f1d4edae',
+        }
+    ],
+    media: [
+        {
+            container: `rapid_product_development-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/immigration-poc.png\'>'
+        }
+    ],
+    content: [
+        {
+            container: `rapid_product_development-content`,
+            content: `<div>Built private Immigration hub in 2 days of development time to provide news via news aggregation service, legal consultation products with transactions handled using internally built cart handling different currencies and private forums community for customers</div>`
         }
     ],
 })
