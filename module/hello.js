@@ -232,12 +232,12 @@ content.set('php', {
             href: 'https://www.daycare-canada.com/',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `php-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/daycare-canada.png\'>'
+        }
+    ],
     content: [
         {
             container: `php-content`,
