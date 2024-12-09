@@ -9,12 +9,12 @@ const patch = init([
 
 const SKILLS = [ 'System Architecture', 'Web UI UX', 'Multi-tenant Infrastructure', 'Concurrency', 'Distributed Systems', 'Real Time Data Transfer', 'Data Modelling' ]
 const LANGUAGES = [ 'Javascript', 'Go', 'Python', 'Java', 'C Sharp', 'Php' ]
-const TOOLS = [ 'PL SQL', 'Redis', 'Next_js React', 'gRPC', 'Websockets', 'Playwright', 'Neo4j', 'NGINX', 'Kubernetes', 'AWS', 'Postgres', 'Proxmox', 'FFmpeg', 'Node.js', 'RTMP', 'Live Chat', 'E-commerce', 'Redux', 'Google Ads IMA SDK', 'Twilio', 'MongoDB' ]
+const TOPICS = [ 'PL SQL', 'Redis', 'Next_js React', 'gRPC', 'Websockets', 'Playwright', 'Neo4j', 'NGINX', 'Kubernetes', 'AWS', 'Postgres', 'Proxmox', 'FFmpeg', 'Node js', 'RTMP', 'Live Chat', 'E-commerce', 'Redux', 'Google Ads IMA SDK', 'Twilio', 'MongoDB' ]
 
 const ALL_SECTIONS = Object.freeze({
     SKILLS: SKILLS,
     LANGUAGES: LANGUAGES,
-    TOOLS: TOOLS
+    TOPICS: TOPICS
 })
 
 const handleSpecialChar = c => {
@@ -22,6 +22,8 @@ const handleSpecialChar = c => {
         return 'C#'
     } else if (c === 'Next_js React') {
         return 'Next.js/React'
+    } else if (c === 'Node js') {
+        return 'Node.js'
     }
     return c
 }
@@ -29,7 +31,7 @@ const handleSpecialChar = c => {
 function buildContainer(container, header, items, f, options) {
     const c = document?.getElementById(container)
     if (c) {
-        const vLan = items.map((m, i) => h(options?.itemProps ?? 'a.font-bold.text-sm.rounded-2xl.px-2.py-1.interact-button', { props: { href: `#${m}`, i: i }, style: { border: '1px solid grey' }, on: { click: () => window.addNewTopic(m, header) }}, `${handleSpecialChar(m)}`))
+        const vLan = items.map((m, i) => h(options?.itemProps ?? `a#${m?.toLowerCase()?.replaceAll(' ', '_') ?? ''}-button.font-bold.text-sm.rounded-2xl.px-2.py-1.interact-button.gentle-shake`, { props: { href: `#${m}`, i: i }, style: { border: '1px solid grey' }, on: { click: e => window.addNewTopic(e, m, header) }}, `${handleSpecialChar(m)}`))
         var vh = h(options?.hProps ?? 'h5.mt-8', null, header)
         var v = h(`div#${header}-subContainer.flex.gap-x-2.gap-y-2.flex-wrap.mt-2`,
             vLan
@@ -53,7 +55,7 @@ setInterval(() => {
     window.unblurAll()
 }, 250)
 
-window.runTypedJob = (data, i) => {
+window.runTypedJob = (data, i, s) => {
     if (data?.[i]?.container) {
         var c = document.getElementById(data[i].container)
         if (data[i]?.content) {
@@ -64,7 +66,7 @@ window.runTypedJob = (data, i) => {
                 onComplete: () => {
                     if (data[i + 1]) {
                         setTimeout(() => {
-                            window.runTypedJob(data, i + 1)
+                            window.runTypedJob(data, i + 1, s)
                         }, data[i]?.delay ?? 1)
                     }
                 }
@@ -74,6 +76,9 @@ window.runTypedJob = (data, i) => {
             if (c) {
                 c.href = data[i].href
             }
+        }
+        if (c?.classList?.contains('story-media') && !c.classList.contains('story-media-filled') && s === 'media') {
+            c.classList.add('story-media-filled')
         }
     }
 }
@@ -92,12 +97,12 @@ content.set('javascript', {
             href: 'https://github.com/lovgrandma/minipost-client',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `javascript-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/minipost-screen.png\'>'
+        }
+    ],
     content: [
         {
             container: `javascript-content`,
@@ -119,12 +124,12 @@ content.set('go', {
             href: 'https://github.com/lovgrandma/tycoon-services/blob/master/ad/ad_queue/ad_queue.go',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `go-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/go-livestreaming-rclone.jpeg\'>'
+        }
+    ],
     content: [
         {
             container: `go-content`,
@@ -146,12 +151,12 @@ content.set('python', {
             href: 'https://github.com/Tycoon-Systems-Corp/tycoon-web-crawler-python-base/blob/main/tycoon_crawler/tycoon_crawler/spiders/tycoon_spider.py',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `python-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/apc-scrape.jpeg\'>'
+        }
+    ],
     content: [
         {
             container: `python-content`,
@@ -254,16 +259,16 @@ content.set('system_architecture', {
             href: 'https://www.tycoon.systems/platform',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `system_architecture-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/ezgif-6-041de09617.gif\'>'
+        }
+    ],
     content: [
         {
             container: `system_architecture-content`,
-            content: `<div>Architected and developed multi-tenant multimedia architecture to support complete requirement for hosting live TV streaming platforms with community features.</div>`
+            content: `<div style="font-size: .8rem; color: grey;">The architecture diagram above was simplified for presentation to non-technical stake holders</div><div>Architected and developed multi-tenant multimedia architecture to support complete requirement for hosting live TV streaming platforms with community features.</div>`
         }
     ],
 })
@@ -281,12 +286,12 @@ content.set('web_ui_ux', {
             href: 'https://www.tycoon.systems/w?v=8e706d41-9366-45ba-a03b-adb218b816a3',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `web_ui_ux-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/ui-ux.png\'>'
+        }
+    ],
     content: [
         {
             container: `web_ui_ux-content`,
@@ -308,12 +313,12 @@ content.set('multi-tenant_infrastructure', {
             href: 'https://www.tycoon.systems/w?v=ffdf8326-c854-40cc-aed1-6c18c9d02614',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `multi-tenant_infrastructure-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/multi-tenant-infrastructure.png\'>'
+        }
+    ],
     content: [
         {
             container: `multi-tenant_infrastructure-content`,
@@ -362,16 +367,16 @@ content.set('distributed_systems', {
             href: 'https://www.tycoon.systems/upload',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `distributed_systems-media`,
+            content: '<img src=\'https://d2p2h79srr15gg.cloudfront.net/img/ScreenShot2022-12-01at10.png\'>'
+        }
+    ],
     content: [
         {
             container: `distributed_systems-content`,
-            content: `<div>Built Go RTMP livestreaming service, containerized via Docker and I am currently testing running k8s cluster to serve distributed HD livestreaming service from my personal Hp dl 380 g9's on proxmox Ubuntu VM</div>`
+            content: `<div>Built Go RTMP livestreaming service, containerized via Docker and I am currently testing running k8s cluster to serve distributed HD livestreaming service from my personal Hp dl 380 g9's on proxmox Ubuntu VM. Additionally I built a VOD upload service that functions behind a clusterized Node.js API for transcoding user videos in various formats to normalized x264 and AAC format in separate MpegDash and HLS playlists</div>`
         }
     ],
 })
@@ -464,17 +469,18 @@ content.set('redis', {
             content: 'Redis',
         }
     ],
-    link: [
-        {
-            container: `redis-link`,
-        }
-    ],
-    // media: [
+    // link: [
     //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
+    //         container: `redis-link`,
+    //         href: ''
     //     }
     // ],
+    media: [
+        {
+            container: `redis-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/livestream-w-chat-2.jpeg\'>'
+        }
+    ],
     content: [
         {
             container: `redis-content`,
@@ -496,12 +502,12 @@ content.set('next_js_react', {
             href: 'https://www.tycoon.systems/w?v=ffdf8326-c854-40cc-aed1-6c18c9d02614',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `next_js_react-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/nextjs-multi-tenant-embed.png\'>'
+        }
+    ],
     content: [
         {
             container: `next_js_react-content`,
@@ -510,11 +516,17 @@ content.set('next_js_react', {
     ],
 })
 
-content.set('twilio', {
+content.set('grpc', {
     h5: [
         {
-            container: `twilio-h5`,
-            content: 'Twilio',
+            container: `grpc-h5`,
+            content: 'gRPC',
+        }
+    ],
+    link: [
+        {
+            container: `grpc-link`,
+            href: 'https://github.com/lovgrandma/tycoon-services/blob/master/video/video.proto',
         }
     ],
     // media: [
@@ -525,8 +537,254 @@ content.set('twilio', {
     // ],
     content: [
         {
-            container: `twilio-content`,
-            content: `<div>Give me a call at +1-647-492-1410</div>`
+            container: `grpc-content`,
+            content: `<div>Implemented gRPC models on Go and Node.js for cross-service communication to initialize new video transcoding jobs after Bull job queue fires individual job</div>`
+        }
+    ],
+})
+
+content.set('websockets', {
+    h5: [
+        {
+            container: `websockets-h5`,
+            content: 'Websockets',
+        }
+    ],
+    link: [
+        {
+            container: `websockets-link`,
+            href: 'https://www.tycoon.systems/w?v=7e5431a8-7174-4717-96ac-97fff60d42ad'
+        }
+    ],
+    media: [
+        {
+            container: `websockets-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/livestream-w-chat.jpeg\'>'
+        }
+    ],
+    content: [
+        {
+            container: `websockets-content`,
+            content: `<div>Using socket.io implemented Sockets Container in React applications for bi-directional communication between client and server to support initializing existing chats, join new chat, scraper updates, video transcode process updates and authorization flows</div>`
+        }
+    ],
+})
+
+content.set('playwright', {
+    h5: [
+        {
+            container: `playwright-h5`,
+            content: 'Playwright',
+        }
+    ],
+    link: [
+        {
+            container: `playwright-link`,
+            href: 'https://github.com/Tycoon-Systems-Corp/tycoon-web-crawler-python-base',
+        }
+    ],
+    media: [
+        {
+            container: `playwright-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/1714105537037.jpg\'>'
+        }
+    ],
+    content: [
+        {
+            container: `playwright-content`,
+            content: `<div>Built web scraper to pull e-commerce retail products using open graph standards leveraging javascript-compatible Python Playwright library</div>`
+        }
+    ],
+})
+
+content.set('neo4j', {
+    h5: [
+        {
+            container: `neo4j-h5`,
+            content: 'Neo4j',
+        }
+    ],
+    media: [
+        {
+            container: `neo4j-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-12-09-neo4j.png\'>'
+        }
+    ],
+    content: [
+        {
+            container: `neo4j-content`,
+            content: `<div>Duplicated incoming records to MongoDB for Neo4j graph database to empower recommended views for videos and articles on "Minipost" YouTube clone personal project. Additionally empowering only comments of users who are friends and friends of friends</div>`
+        }
+    ],
+})
+
+content.set('nginx', {
+    h5: [
+        {
+            container: `nginx-h5`,
+            content: 'Nginx',
+        }
+    ],
+    // media: [
+    //     {
+    //         container: `nginx-media`,
+    //         content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-12-09-neo4j.png\'>'
+    //     }
+    // ],
+    content: [
+        {
+            container: `nginx-content`,
+            content: `<div>Build nginx rule configurations on multiple AWS EC2 Ubuntu instances to support REST calls, Socket.io connections, RTMP streams using nginx rtmp module and gRPC calls across different internal servers and cross web origin</div>`
+        }
+    ],
+})
+
+content.set('kubernetes', {
+    h5: [
+        {
+            container: `kubernetes-h5`,
+            content: 'Kubernetes',
+        }
+    ],
+    // media: [
+    //     {
+    //         container: `nginx-media`,
+    //         content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-12-09-neo4j.png\'>'
+    //     }
+    // ],
+    content: [
+        {
+            container: `kubernetes-content`,
+            content: `<div>Ongoing: Implementing Go RTMP livestreaming service for distributed computing on HP DL 380 G9 proxmox server. Handling rtmp /servestream, /terminate and /startstream ingress endpoints</div>`
+        }
+    ],
+})
+
+content.set('aws', {
+    h5: [
+        {
+            container: `aws-h5`,
+            content: 'Amazon Web Services',
+        }
+    ],
+    link: [
+        {
+            container: `aws-link`,
+            href: 'https://www.tycoon.systems',
+        }
+    ],
+    // media: [
+    //     {
+    //         container: `nginx-media`,
+    //         content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-12-09-neo4j.png\'>'
+    //     }
+    // ],
+    content: [
+        {
+            container: `aws-content`,
+            content: `<div>Setup and managed business deployment on Amazon Web Services using AWS EC2, Route 53, S3, Cloudfront and ingested new customers via form to automatically provision tenant-separated resources (S3, Cloudfront distribution) to immediately onboard enterprise B2B customers. See example: www.fidio.ca. Leveraged rclone for continuous delivery of RTMP livestream chunks via HLS ABR playlist</div>`
+        }
+    ],
+})
+
+content.set('postgres', {
+    h5: [
+        {
+            container: `postgres-h5`,
+            content: 'Postgres',
+        }
+    ],
+    link: [
+        {
+            container: `postgres-link`,
+            href: 'https://www.tycoon.systems',
+        }
+    ],
+    media: [
+        {
+            container: `postgres-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-10-04+142135.png\'>'
+        }
+    ],
+    content: [
+        {
+            container: `postgres-content`,
+            content: `<div>Built multi-tenant infrastructure using Postgres GraphQL foundation. Creating over 25 models to manage customers multi-faceted needs for serving communities, video on demand and live video, conversations via forums, products tracking type and stock. Additionally used to track customer automatic monthly invoices</div>`
+        }
+    ],
+})
+
+content.set('proxmox', {
+    h5: [
+        {
+            container: `proxmox-h5`,
+            content: 'Proxmox',
+        }
+    ],
+    link: [
+        {
+            container: `proxmox-link`,
+            href: 'https://www.tycoon.systems',
+        }
+    ],
+    content: [
+        {
+            container: `proxmox-content`,
+            content: `<div>Set up Proxmox on physical servers to support deployment of k8s on Ubuntu VM's</div>`
+        }
+    ],
+})
+
+content.set('ffmpeg', {
+    h5: [
+        {
+            container: `ffmpeg-h5`,
+            content: 'Ffmpeg',
+        }
+    ],
+    link: [
+        {
+            container: `ffmpeg-link`,
+            href: 'https://www.tycoon.systems/upload',
+        }
+    ],
+    media: [
+        {
+            container: `ffmpeg-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/livestreampoc.png\'>'
+        }
+    ],
+    content: [
+        {
+            container: `ffmpeg-content`,
+            content: `<div>Built multiple pipelines to transcode video using Ffmpeg. Built commands to support video transcoding pipeline for static video on demand, livestreaming incoming RTMP publish streams and extracting thumbnails from ongoing livestreams</div>`
+        }
+    ],
+})
+
+content.set('node_js', {
+    h5: [
+        {
+            container: `node_js-h5`,
+            content: 'Node.js',
+        }
+    ],
+    // link: [
+    //     {
+    //         container: `node_js-link`,
+    //         href: 'https://www.tycoon.systems/upload',
+    //     }
+    // ],
+    // media: [
+    //     {
+    //         container: `ffmpeg-media`,
+    //         content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-10-04+142135.png\'>'
+    //     }
+    // ],
+    content: [
+        {
+            container: `node_js-content`,
+            content: `<div>Built Express.js based Node.js API's utilizing clusterization, job queues and asynchronous programming to support E-commerce transactions with Stripe, user onboarding, CRUD operations to Postgres, MongoDB and Neo4j, user cart management, image processing for products and user icons, live chat using socket.io and forums</div>`
         }
     ],
 })
@@ -544,12 +802,12 @@ content.set('rtmp', {
             href: 'https://www.tycoon.systems/w?v=f3fc2ffe-389d-4dd7-81f0-54f644a78eb0',
         }
     ],
-    // media: [
-    //     {
-    //         container: `javascript-media`,
-    //         content: 'Javascript'
-    //     }
-    // ],
+    media: [
+        {
+            container: `rtmp-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/tycoon-livestream-drifting.png\'>'
+        }
+    ],
     content: [
         {
             container: `rtmp-content`,
@@ -558,12 +816,168 @@ content.set('rtmp', {
     ],
 })
 
+content.set('live_chat', {
+    h5: [
+        {
+            container: `live_chat-h5`,
+            content: 'Live Chat',
+        }
+    ],
+    link: [
+        {
+            container: `live_chat-link`,
+            href: 'https://www.tycoon.systems/embed',
+        }
+    ],
+    media: [
+        {
+            container: `live_chat-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/livestream-w-chat.jpeg\'><img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/live-chat.png\'>'
+        }
+    ],
+    content: [
+        {
+            container: `live_chat-content`,
+            content: `<div>Built Live chat using Redis streams to process thousands of incoming messages to clusterized Node.js API for multi-tenant customers from different domains appending to unique livestream instances under their unique tenant id</div>`
+        }
+    ],
+})
+
+content.set('e-commerce', {
+    h5: [
+        {
+            container: `e-commerce-h5`,
+            content: 'E-commerce',
+        }
+    ],
+    link: [
+        {
+            container: `e-commerce-link`,
+            href: 'https://www.tycoon.systems/w?v=1a8e2387-9ca5-41d9-b61b-964c9461b302',
+        }
+    ],
+    media: [
+        {
+            container: `e-commerce-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-09-24+230622.png\'><img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-12-09-ecommerce-minipost.png\'><img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/shippingclassview.png\'>'
+        }
+    ],
+    content: [
+        {
+            container: `e-commerce-content`,
+            content: `<div>Developed e-commerce framework for customers to leverage with "add_to_cart", "buy", "create_product" hooks to interface with internal API. Empowering their users to purchase tickets and virtual products using Stripe and Paystack depending on detected user geo-location on Node.js API with geoip. Additionally built "shipping classes" module to handle shipping classes from vendor to allow for them to dynamically set shipping costs on products they have published</div>`
+        }
+    ],
+})
+
+content.set('redux', {
+    h5: [
+        {
+            container: `redux-h5`,
+            content: 'Redux',
+        }
+    ],
+    // link: [
+    //     {
+    //         container: `redux-link`,
+    //         href: 'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/shippingclassview.png',
+    //     }
+    // ],
+    // media: [
+    //     {
+    //         container: `redux-media`,
+    //         content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/Screenshot+2024-09-24+230622.png\'>'
+    //     }
+    // ],
+    content: [
+        {
+            container: `redux-content`,
+            content: `<div>Architected and delivered Redux structure at RBC Capital Markets to cache user session data and data sets data on React client side runtime. Keep track of report references and corresponding report individual queries with timestamps, records, columns, size and more</div>`
+        }
+    ],
+})
+
+content.set('google_ads_ima_sdk', {
+    h5: [
+        {
+            container: `google_ads_ima_sdk-h5`,
+            content: 'Google Ads IMA SDK',
+        }
+    ],
+    // link: [
+    //     {
+    //         container: `redux-link`,
+    //         href: 'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/shippingclassview.png',
+    //     }
+    // ],
+    media: [
+        {
+            container: `google_ads_ima_sdk-media`,
+            content: '<img src=\'https://tycoon-public-share.s3.us-east-2.amazonaws.com/resume/google-ads-ima-sdk.png\'>'
+        }
+    ],
+    content: [
+        {
+            container: `google_ads_ima_sdk-content`,
+            content: `<div>Integrated Google Ads IMA SDK for multi-tenant repository to serve multiple customers for static and video based advertisements</div>`
+        }
+    ],
+})
+
+content.set('twilio', {
+    h5: [
+        {
+            container: `twilio-h5`,
+            content: 'Twilio',
+        }
+    ],
+    // media: [
+    //     {
+    //         container: `twilio-media`,
+    //         content: 'Twilio'
+    //     }
+    // ],
+    content: [
+        {
+            container: `twilio-content`,
+            content: `<div>Give me a call at +1-647-492-1410</div>`
+        }
+    ],
+})
+
+content.set('mongodb', {
+    h5: [
+        {
+            container: `mongodb-h5`,
+            content: 'MongoDB',
+        }
+    ],
+    // media: [
+    //     {
+    //         container: `javascript-media`,
+    //         content: 'Javascript'
+    //     }
+    // ],
+    content: [
+        {
+            container: `mongodb-content`,
+            content: `<div>Created models for MongDB database for YouTube clone to support user onboarding, articles, videos and products</div>`
+        }
+    ],
+})
+
+
 document.addEventListener('typed-initialized', e => {
     Object.entries(ALL_SECTIONS).map(async m => {
         const containerName = `${m[0].charAt(0)}${m[0]?.substring(1, m[0].length).toLowerCase()}-loadTo`
         if (m?.[1]?.[0]?.toLowerCase) {
             const topic = m[1][0].toLowerCase()?.replaceAll(' ', '_')
             const b = await fetch(`/module/stories/${topic}`)
+            const btn = document.getElementById(`${topic}-button`)
+            console.log(btn)
+            if (btn) {
+                btn.classList.add('selected-item')
+            }
             let useMarkup = b?.ok ? await b.text() : await fetch(`/module/stories/default`).then(res => res.text())
             if (useMarkup) {
                 const c = document.getElementById(containerName)
@@ -572,7 +986,7 @@ document.addEventListener('typed-initialized', e => {
                 const t = content.get(topic)
                 if (t && Object.entries(t)?.length > 0) {
                     Object.entries(t).map(m => {
-                        window.runTypedJob(m[1], 0)
+                        window.runTypedJob(m[1], 0, m[0])
                     })
                 }
             }
@@ -580,11 +994,14 @@ document.addEventListener('typed-initialized', e => {
     })
 })
 
-window.addNewTopic = async (t, container) => {
+window.addNewTopic = async (e, t, container) => {
+    if (e?.currentTarget && !e.currentTarget.classList.contains('selected-item')) {
+        e.currentTarget.classList.add('selected-item')
+    }
     if (t) {
         const containerName = `${container.charAt(0)}${container?.substring(1, container.length).toLowerCase()}-loadTo`
         const topic = t.toLowerCase()?.replaceAll(' ', '_')
-        const topicExisting = document.getElementById(`${topic}-container`)
+        let topicExisting = document.getElementById(`${topic}-container`)
         if (!topicExisting) {
             const b = await fetch(`/module/stories/${topic}`)
             let useMarkup = b?.ok ? await b.text() : await fetch(`/module/stories/default`).then(res => res.text())
@@ -597,10 +1014,15 @@ window.addNewTopic = async (t, container) => {
                     el.innerHTML = useMarkup
                     c.insertBefore(el, c.firstChild)
                     Object.entries(t).map(m => {
-                        window.runTypedJob(m[1], 0)
+                        window.runTypedJob(m[1], 0, m[0])
                     })
                 }
             }
+        } else {
+            window.scrollTo({
+                top: topicExisting.offsetTop,
+                behavior: 'smooth'
+            })
         }
     }
 }
@@ -609,4 +1031,19 @@ buildContainer('skills-container', 'Skills', SKILLS)
 buildContainer('languages-container', 'Languages', LANGUAGES, null, {
     hProps: 'h5.mt-4'
 })
-buildContainer('tools-container', 'Tools', TOOLS)
+buildContainer('topics-container', 'Topics', TOPICS)
+
+setTimeout(() => {
+    LANGUAGES.map((m, i)=> {
+        setTimeout(() => {
+            var c = document.getElementById(`${m?.toLowerCase()}-button`)
+            console.log(c)
+            if (c) {
+                c.classList.add('gentle-shake-active')
+                setTimeout(() => {
+                    c.classList.remove('gentle-shake-active')
+                }, 500)
+            }
+        }, i * 100)
+    })
+}, 1500)
