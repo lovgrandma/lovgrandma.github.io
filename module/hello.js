@@ -640,7 +640,7 @@ content.set('neo4j', {
     content: [
         {
             container: `neo4j-content`,
-            content: `<div>Duplicated incoming records to MongoDB for Neo4j graph database to empower recommended views for videos and articles on "Minipost" YouTube clone personal project. Additionally empowering only comments of users who are friends and friends of friends</div>`
+            content: `<div>Duplicated incoming records from MongoDB to Neo4j graph database to empower recommended views for videos and articles on "Minipost" YouTube clone personal project. Additionally empowering only comments of users who are friends and friends of friends</div>`
         }
     ],
 })
