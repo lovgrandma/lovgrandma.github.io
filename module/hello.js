@@ -510,6 +510,27 @@ content.set('next_js_react', {
     ],
 })
 
+content.set('twilio', {
+    h5: [
+        {
+            container: `twilio-h5`,
+            content: 'Twilio',
+        }
+    ],
+    // media: [
+    //     {
+    //         container: `javascript-media`,
+    //         content: 'Javascript'
+    //     }
+    // ],
+    content: [
+        {
+            container: `twilio-content`,
+            content: `<div>Give me a call at +1-647-492-1410</div>`
+        }
+    ],
+})
+
 document.addEventListener('typed-initialized', e => {
     Object.entries(ALL_SECTIONS).map(async m => {
         const containerName = `${m[0].charAt(0)}${m[0]?.substring(1, m[0].length).toLowerCase()}-loadTo`
@@ -541,15 +562,17 @@ window.addNewTopic = async (t, container) => {
             const b = await fetch(`/module/stories/${topic}`)
             let useMarkup = b?.ok ? await b.text() : await fetch(`/module/stories/default`).then(res => res.text())
             if (useMarkup) {
-                const c = document.getElementById(containerName)
-                useMarkup = useMarkup.replaceAll('%var%', topic)
-                const el = document.createElement('div')
-                el.innerHTML = useMarkup
-                c.insertBefore(el, c.firstChild)
                 const t = content.get(topic)
-                Object.entries(t).map(m => {
-                    window.runTypedJob(m[1], 0)
-                })
+                if (t) {
+                    const c = document.getElementById(containerName)
+                    useMarkup = useMarkup.replaceAll('%var%', topic)
+                    const el = document.createElement('div')
+                    el.innerHTML = useMarkup
+                    c.insertBefore(el, c.firstChild)
+                    Object.entries(t).map(m => {
+                        window.runTypedJob(m[1], 0)
+                    })
+                }
             }
         }
     }
